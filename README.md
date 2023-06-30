@@ -1,5 +1,7 @@
 <h1>API.grea_23</h1>
-API experimental para pasarela de datos.
-Actuamente esta API puede consultar:
-  La descripción de los Municipios.
-  Municipios con un estado y programa específico.
+<p>API experimental para pasarela de datos.</p>
+
+<ul>Actuamente esta API puede consultar:
+  <li><a>La descripción de los Municipios.</a>
+  <li><a>Municipios con un estado y programa específico.</a></li>
+</ul>
