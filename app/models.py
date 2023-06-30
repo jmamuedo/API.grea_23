@@ -30,3 +30,17 @@ class Municipios(Base):
 
 	def __repr__(self):
 		return f"<id_dera={self.id_dera} cod_mun={self.cod_mun}>"  
+	
+class PEM(Base):
+	__tablename__ = 'pem'
+	id =  Column(Integer)
+	cod_mun = Column(VARCHAR, primary_key=True, index=True)
+	estado = Column(VARCHAR)
+	fecha_h = Column(DATE)
+	fecha_r1 = Column(DATE)
+	fecha_r2 = Column(DATE)
+	h_r = Column(String)
+	programa = Column(VARCHAR)
+
+	def __repr__(self):
+		return f"<id_dera={self.id_dera} cod_mun={self.cod_mun}>"  	

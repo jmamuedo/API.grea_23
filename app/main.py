@@ -117,7 +117,20 @@ class Municipios(BaseModel):
     provincia: str
 
     class Config:
-        orm_mode = True                
+        orm_mode = True
+
+class PEM(BaseModel):
+    id: int
+    cod_mun: str
+    estado: str
+    fecha_h: Optional[date] = Field(..., nullable=True)
+    fecha_r1: Optional[date] = Field(..., nullable=True)
+    fecha_r2: Optional[date] = Field(..., nullable=True)
+    h_r: Optional[str] = Field(..., nullable=True)
+    programa: Optional[str] = Field(..., nullable=True)
+
+    class Config:
+        orm_mode = True
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -202,6 +215,13 @@ def get_all_pred(id_dera:str,current_user: User = Depends(get_current_active_use
      else:    
         pred=db.query(models.Municipios).filter(models.Municipios.id_dera==id_dera).all()
      return pred
+
+@app.get('/pem',response_model=List[PEM],status_code=status.HTTP_200_OK)
+def get_all_pred(cod_mun:str,current_user: User = Depends(get_current_active_user)):
+    
+    pred=db.query(models.PEM).filter(models.PEM.cod_mun==cod_mun).all()
+
+    return pred
 
 
 # @app.get('/real_data',
