@@ -217,9 +217,12 @@ def get_all_pred(id_dera:str,current_user: User = Depends(get_current_active_use
      return pred
 
 @app.get('/pem',response_model=List[PEM],status_code=status.HTTP_200_OK)
-def get_all_pred(cod_mun:str,current_user: User = Depends(get_current_active_user)):
+def get_all_pred(estado:str,programa:str,current_user: User = Depends(get_current_active_user)):
     
-    pred=db.query(models.PEM).filter(models.PEM.cod_mun==cod_mun).all()
+    pred=db.query(models.PEM).filter(models.PEM.estado==estado,
+                   models.PEM.programa==programa).all()
+
+    #pred=db.query(models.PEM).filter(models.PEM.cod_mun==cod_mun).all()
 
     return pred
 
